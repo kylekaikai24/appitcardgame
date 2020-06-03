@@ -1,0 +1,60 @@
+.scorebroad {
+    width: 1024px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 15px;
+}
+
+.position-fix {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.table-container {
+    overflow-y: auto;
+
+}
+
+.rank-table {
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.rank-table th {
+    padding: 8px;
+    font-size: 25px;
+    font-weight: 700;
+    border-bottom: 2px solid #ddd;
+}
+
+.rank-table td {
+    font-size: 20px;
+    padding: 8px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .scorebroad {
+        width: 768px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .scorebroad {
+        width: 568px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .scorebroad {
+        width: 95%;
+    }
+}

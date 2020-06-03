@@ -1,0 +1,80 @@
+p {
+    margin: 0;
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.modal-body {
+    width: 1024px;
+    margin: auto;
+    border: 3px solid white;
+    padding: 50px;
+    text-align: center;
+}
+
+.congrat-msg {
+    color: white;
+    font-size: 50px;
+    margin: 30px 0;
+}
+
+.modal-score {
+    color: white;
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+.modal-name-input {
+    width: 100%;
+    background: transparent;
+    border: 2px solid white;
+    padding: 15px 0 15px 15px;
+    color: white;
+    font-size: 20px;
+    outline: none;
+    text-align: center;
+}
+
+.modal-name-input::placeholder {
+    font-family: "AlienLeague";
+    color: rgb(218, 218, 218);
+}
+
+.modal-name-input::-ms-input-placeholder {
+    font-family: "AlienLeague";
+    color: rgb(218, 218, 218);
+}
+
+.modal-name-input::-ms-input-placeholder {
+    font-family: "AlienLeague";
+    color: rgb(218, 218, 218);
+}
+
+.modal-submit {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    font-family: "AlienLeague";
+    font-size: 27px;
+    margin: 30px 0;
+    padding: 10px 35px;
+    outline: none;
+    cursor: pointer;
+    transition: font-weight 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.modal-submit:hover {
+    background: rgb(255, 255, 255);
+    color: black;
+    font-weight: 600;
+}
