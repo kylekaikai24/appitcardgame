@@ -28,11 +28,11 @@ Database : [restdb][restdbsite]
 
 Please do not reuse the client-id of the online database for other purpose
 
-This project is also deployed onto github free hosting: [https://kylekaikai24.github.io/appitcardgame/#/appitcardgame/scorebroad][githubpage]  
+This project is also deployed onto github free hosting: [https://kylekaikai24.github.io/appitcardgame/#/appitcardgame][githubpage]  
 Please kindly notice if any issue regarding NDA or copyright
 
 [icons8site]: https://icons8.com/icons/
 [webonlinefonts]: https://www.onlinewebfonts.com/download/6c231d42868e5c7826ac7c8607d428cb
 [bandcamp]: https://daily.bandcamp.com/lists/outer-space-ambient-list
 [restdbsite]: restdb.io
-[githubpage]: https://kylekaikai24.github.io/appitcardgame/#/appitcardgame/scorebroad
+[githubpage]: https://kylekaikai24.github.io/appitcardgame/#/appitcardgame
