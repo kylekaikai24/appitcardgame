@@ -156,8 +156,19 @@ a {
 }
 
 @media screen and (max-width: 568px) {
+    body {
+        overflow-y: scroll;
+    }
+
     .game-broad-wrapper {
         width: 95%;
+        justify-content: flex-start;
+        padding-top: 15px;
+        overflow-x: scroll;
+    }
+
+    .game-broad {
+        margin: 70px auto 0 auto;
     }
 
     .game-count {
@@ -174,8 +185,8 @@ a {
     }
 }
 
-@media screen and (max-width: 750px) {
-    @media screen and (max-height: 414px) {
+@media screen and (max-width: 950px) {
+    @media screen and (max-height: 500px) {
         .game-broad-wrapper {
             width: 95%;
         }

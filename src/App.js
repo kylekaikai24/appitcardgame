@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Game from "../src/Views/Game";
@@ -15,7 +15,7 @@ function App() {
   ]);
 
   return (
-    <Router>
+    <Router basename="/appitcardgame/">
       <ShouldApiCallContext.Provider value={providerValue}>
         <Route exact path="/" component={Game} />
         <Route exact path="/scorebroad" component={Scorebroad} />
