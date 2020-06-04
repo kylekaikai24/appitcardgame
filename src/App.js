@@ -5,11 +5,21 @@ import "./App.css";
 import Game from "../src/Views/Game";
 import Scorebroad from "../src/Views/Scorebroad";
 
+import { ShouldApiCallContext } from "./Context/shouldCallApiContext";
+
 function App() {
+  const [apiCall, setApiCall] = React.useState(true);
+  const providerValue = React.useMemo(() => ({ apiCall, setApiCall }), [
+    apiCall,
+    setApiCall,
+  ]);
+
   return (
     <Router>
-      <Route exact path="/" component={Game} />
-      <Route exact path="/scorebroad" component={Scorebroad} />
+      <ShouldApiCallContext.Provider value={providerValue}>
+        <Route exact path="/" component={Game} />
+        <Route exact path="/scorebroad" component={Scorebroad} />
+      </ShouldApiCallContext.Provider>
     </Router>
   );
 }

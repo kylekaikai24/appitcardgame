@@ -1,16 +1,27 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import { instance } from "../Util/axiosInstance";
 import axios from "axios";
 
+// css
 import "../Asset/css/scorebroad.css";
 
+// icons
 import Planet from "../Asset/svg/planet";
 import Rocket from "../Asset/svg/rocket";
 
+// Hooks & Context
+import { useIsMobile } from "../Hooks/useIsMobile";
+import { ShouldApiCallContext } from "../Context/shouldCallApiContext";
+
 const Scorebroad = (props) => {
+  // State
   const [tableData, setTableData] = React.useState([]);
 
+  // Hook & context
+  const isMobile = useIsMobile();
+  const context = React.useContext(ShouldApiCallContext);
+
+  // function: handle fetch data from db and set to state
   const fetchData = async () => {
     const options = {
       method: "GET",
@@ -24,23 +35,39 @@ const Scorebroad = (props) => {
     try {
       const data = await axios(options);
       let sortData = data.data;
-      sortData.sort((a, b) => b.score > a.score);
+      sortData.sort((a, b) => (b.score > a.score ? 1 : -1));
+      console.log(sortData);
       setTableData(sortData);
+      localStorage.setItem("rankingDataStorage", JSON.stringify(sortData));
     } catch (error) {
       console.log(error);
     }
   };
 
+  /*
+    Identify should api be called when component mounted
+    If new rank is submitted in the game page, fetch new data from db
+    If no new ranking, take data from localstorage and set data state
+*/
   React.useEffect(() => {
-    fetchData();
+    if (context.apiCall) {
+      fetchData();
+    } else {
+      const rankingDataStorage = localStorage.getItem("rankingDataStorage");
+      if (rankingDataStorage === null) {
+        fetchData();
+      } else if (Array.isArray(JSON.parse(rankingDataStorage))) {
+        setTableData(JSON.parse(rankingDataStorage));
+      }
+    }
   }, []);
 
   return (
     <div className="scorebroad">
       <div className="nav">
-        <Planet size={70} color={"white"} />
+        <Planet size={isMobile ? 50 : 70} color={"white"} />
         <span className="game-count">space rank</span>
-        <Link to="/">
+        <Link to="/" onClick={() => context.setApiCall(false)}>
           <span className="to-scorebroad">
             <span className="to-scorebroad-text">game</span>
             <Rocket size={20} color={"white"} rotate={45} />
@@ -57,15 +84,21 @@ const Scorebroad = (props) => {
             </tr>
           </thead>
           <tbody>
-            {tableData &&
-              tableData.length > 0 &&
+            {tableData && tableData.length > 0 ? (
               tableData.map((item, index) => (
-                <tr>
+                <tr key={`rank-${index}`}>
                   <td>{index + 1}</td>
                   <td>{item.playerName}</td>
                   <td>{item.score}</td>
                 </tr>
-              ))}
+              ))
+            ) : (
+              <tr>
+                <td></td>
+                <td>No records</td>
+                <td></td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

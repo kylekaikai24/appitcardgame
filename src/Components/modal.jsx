@@ -3,14 +3,13 @@ import React from "react";
 import "../Asset/css/modal.css";
 
 const modal = (props) => {
-  const { count, setVictory, reGame, setFormData, value } = props;
+  const { count, reGame, setFormData, value, showErrorMsg } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
-    setVictory(false);
     reGame();
   };
+
   return (
     <div className="overlay">
       <div className="modal-body">
@@ -24,8 +23,13 @@ const modal = (props) => {
             value={value.playerName}
             onChange={(e) => {
               setFormData({ ...value, playerName: e.target.value });
+              console.log(value);
             }}
           />
+          <p className="remind-msg">
+            *1-10 English or Chinese characters without symbol and space
+          </p>
+          {showErrorMsg && <p className="error-msg">Invalid name</p>}
           <input
             type="submit"
             value="Submit"

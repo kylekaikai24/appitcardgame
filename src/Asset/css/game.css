@@ -135,3 +135,66 @@ a {
     background-size: cover;
     background-position: center;
 }
+
+@media screen and (max-width: 1440px) {
+    .card {
+        height: 150px;
+        width: 107px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .game-broad-wrapper {
+        width: 768px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game-broad-wrapper {
+        width: 568px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .game-broad-wrapper {
+        width: 95%;
+    }
+
+    .game-count {
+        font-size: 30px;
+    }
+
+    .to-scorebroad-text {
+        font-size: 20px;
+    }
+
+    .card {
+        height: 100px;
+        width: 72px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    @media screen and (max-height: 414px) {
+        .game-broad-wrapper {
+            width: 95%;
+        }
+
+        .game-broad {
+            margin: 0 auto;
+        }
+
+        .game-count {
+            font-size: 20px;
+        }
+
+        .to-scorebroad-text {
+            font-size: 18px;
+        }
+
+        .card {
+            height: 75px;
+            width: 54px;
+        }
+    }
+}
