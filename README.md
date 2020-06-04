@@ -20,8 +20,8 @@ Project automatically start at `localhost:3000`
 ## Resources
 
 SVG icons: [icons8][icons8site]  
-Fonts: [Web Online Fonts][webonlinefonts]
-Background Images: [Bandcamp][bandcamp]
+Fonts: [Web Online Fonts][webonlinefonts]  
+Background Images: [Bandcamp][bandcamp]  
 Database : [restdb][restdbsite]
 
 ## Remarks
