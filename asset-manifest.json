@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/appitcardgame/static/css/main.77f60aa8.chunk.css",
+    "main.js": "/appitcardgame/static/js/main.b38b9f67.chunk.js",
+    "main.js.map": "/appitcardgame/static/js/main.b38b9f67.chunk.js.map",
+    "runtime-main.js": "/appitcardgame/static/js/runtime-main.583236ee.js",
+    "runtime-main.js.map": "/appitcardgame/static/js/runtime-main.583236ee.js.map",
+    "static/js/2.42966367.chunk.js": "/appitcardgame/static/js/2.42966367.chunk.js",
+    "static/js/2.42966367.chunk.js.map": "/appitcardgame/static/js/2.42966367.chunk.js.map",
+    "index.html": "/appitcardgame/index.html",
+    "precache-manifest.3de98276ff17f1957b314c108da9ae4b.js": "/appitcardgame/precache-manifest.3de98276ff17f1957b314c108da9ae4b.js",
+    "service-worker.js": "/appitcardgame/service-worker.js",
+    "static/css/main.77f60aa8.chunk.css.map": "/appitcardgame/static/css/main.77f60aa8.chunk.css.map",
+    "static/js/2.42966367.chunk.js.LICENSE.txt": "/appitcardgame/static/js/2.42966367.chunk.js.LICENSE.txt",
+    "static/media/game.css": "/appitcardgame/static/media/planet.4b3a2baa.gif",
+    "static/media/cardback.png": "/appitcardgame/static/media/cardback.1669af11.png",
+    "static/media/spinner.gif": "/appitcardgame/static/media/spinner.2028b651.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.583236ee.js",
+    "static/js/2.42966367.chunk.js",
+    "static/css/main.77f60aa8.chunk.css",
+    "static/js/main.b38b9f67.chunk.js"
+  ]
+}
