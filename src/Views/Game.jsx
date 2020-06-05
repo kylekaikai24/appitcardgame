@@ -86,7 +86,7 @@ const Game = (props) => {
     1.) identify fliped card
     2.) if card to check then check if two cards match
     3.) no match => change card isFlip status back to false
-    4.) is match => push to matched arrays
+    4.) is match => push to matched array "test ci"
 */
   const handleFlip = (index, card) => {
     const newData = [...initData];
