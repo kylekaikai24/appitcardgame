@@ -24,6 +24,7 @@ Spinner: [loading.io][loadingio]
 Fonts: [Web Online Fonts][webonlinefonts]  
 Background Images: [Bandcamp][bandcamp]  
 Database : [restdb][restdbsite]
+CICD: [travis CI][travisci]
 
 ## Remarks
 
@@ -38,3 +39,4 @@ Please kindly notice if any issue regarding NDA or copyright
 [restdbsite]: https://restdb.io/
 [githubpage]: https://kylekaikai24.github.io/appitcardgame/#/appitcardgame
 [loadingio]: https://loading.io/
+[travisci]: https://travis-ci.com/
