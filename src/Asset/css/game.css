@@ -70,6 +70,7 @@ a {
     width: 125px;
     cursor: pointer;
     border-radius: 12px;
+    border: none;
 }
 
 .card-face {
@@ -106,6 +107,7 @@ a {
 .card-back {
     /* background-color: black;
     border-color: #FF6D00; */
+    border: none;
     transform: rotateY(0);
 }
 
@@ -133,13 +135,14 @@ a {
     background-image: url("../image/cardfront.png");
     background-repeat: no-repeat;
     background-size: cover;
+    border: none;
     background-position: center;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1600px) {
     .card {
         height: 150px;
-        width: 107px;
+        width: 110px;
     }
 }
 
