@@ -9,6 +9,8 @@ import "../Asset/css/scorebroad.css";
 import Planet from "../Asset/svg/planet";
 import Rocket from "../Asset/svg/rocket";
 
+import Spinner from "../Asset/image/spinner.gif";
+
 // Hooks & Context
 import { useIsMobile } from "../Hooks/useIsMobile";
 import { ShouldApiCallContext } from "../Context/shouldCallApiContext";
@@ -16,7 +18,7 @@ import { ShouldApiCallContext } from "../Context/shouldCallApiContext";
 const Scorebroad = (props) => {
   // State
   const [tableData, setTableData] = React.useState([]);
-
+  const [isLoading, setIsLoading] = React.useState(false);
   // Hook & context
   const isMobile = useIsMobile();
   const context = React.useContext(ShouldApiCallContext);
@@ -34,6 +36,7 @@ const Scorebroad = (props) => {
     };
     try {
       const data = await axios(options);
+      setIsLoading(false);
       let sortData = data.data;
       sortData.sort((a, b) => (b.score > a.score ? 1 : -1));
       console.log(sortData);
@@ -41,6 +44,7 @@ const Scorebroad = (props) => {
       localStorage.setItem("rankingDataStorage", JSON.stringify(sortData));
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -51,10 +55,12 @@ const Scorebroad = (props) => {
 */
   React.useEffect(() => {
     if (context.apiCall) {
+      setIsLoading(true);
       fetchData();
     } else {
       const rankingDataStorage = localStorage.getItem("rankingDataStorage");
       if (rankingDataStorage === null) {
+        setIsLoading(true);
         fetchData();
       } else if (Array.isArray(JSON.parse(rankingDataStorage))) {
         setTableData(JSON.parse(rankingDataStorage));
@@ -84,21 +90,31 @@ const Scorebroad = (props) => {
             </tr>
           </thead>
           <tbody>
-            {tableData && tableData.length > 0 ? (
-              tableData.map((item, index) => (
-                <tr key={`rank-${index}`}>
-                  <td>{index + 1}</td>
-                  <td>{item.playerName}</td>
-                  <td>{item.score}</td>
-                </tr>
-              ))
-            ) : (
+            {isLoading ? (
               <tr>
                 <td></td>
-                <td>No records</td>
+                <td>
+                  <img src={Spinner} style={{ width: "50px", height: "50px" }} />
+                </td>
                 <td></td>
               </tr>
-            )}
+            ) : (
+                tableData && tableData.length > 0 ? (
+                  tableData.map((item, index) => (
+                    <tr key={`rank-${index}`}>
+                      <td>{index + 1}</td>
+                      <td>{item.playerName}</td>
+                      <td>{item.score}</td>
+                    </tr>
+                  ))
+                ) : (
+                    <tr>
+                      <td></td>
+                      <td>No records</td>
+                      <td></td>
+                    </tr>
+                  )
+              )}
           </tbody>
         </table>
       </div>

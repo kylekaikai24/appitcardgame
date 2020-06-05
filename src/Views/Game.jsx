@@ -143,32 +143,32 @@ const Game = (props) => {
   };
 
   // API call: save data to restdb.io
-  const saveToDb = async (data) => {
-    const checkPlayerName = UseRegex(data.playerName);
-    console.log(checkPlayerName);
-    if (checkPlayerName) {
-      const options = {
-        method: "POST",
-        headers: {
-          "cache-control": "no-cache",
-          "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
-        },
-        data: data,
-        url:
-          "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
-      };
-      try {
-        const data = await axios(options);
-        setCount(0);
-        setShowErrorMsg(false);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log(checkPlayerName, data.playerName);
-      setShowErrorMsg(true);
-    }
-  };
+  // const saveToDb = async (data) => {
+  //   const checkPlayerName = UseRegex(data.playerName);
+  //   console.log(checkPlayerName);
+  //   if (checkPlayerName) {
+  //     const options = {
+  //       method: "POST",
+  //       headers: {
+  //         "cache-control": "no-cache",
+  //         "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
+  //       },
+  //       data: data,
+  //       url:
+  //         "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
+  //     };
+  //     try {
+  //       const data = await axios(options);
+  //       setCount(0);
+  //       setShowErrorMsg(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log(checkPlayerName, data.playerName);
+  //     setShowErrorMsg(true);
+  //   }
+  // };
 
   /*
     handle re-game, after player submitted their name 
@@ -178,7 +178,7 @@ const Game = (props) => {
   const handleReGame = () => {
     // saveToDb(formData);
 
-const checkPlayerName = UseRegex(formData.playerName);
+    const checkPlayerName = UseRegex(formData.playerName);
     console.log(checkPlayerName);
     if (checkPlayerName) {
       const options = {
@@ -187,7 +187,7 @@ const checkPlayerName = UseRegex(formData.playerName);
           "cache-control": "no-cache",
           "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
         },
-        data: data,
+        data: formData,
         url:
           "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
       };
@@ -196,19 +196,19 @@ const checkPlayerName = UseRegex(formData.playerName);
         setCount(0);
         setShowErrorMsg(false);
 
-localStorage.removeItem("gameDataStorage");
-    localStorage.removeItem("gameScoreStorage");
-    localStorage.removeItem("cardToCheckStorage");
-    localStorage.removeItem("gameDataMatchedStorage");
-    context.setApiCall(true);
-    setVictory(false);
-    setInitData(data);
-    setMatched([]);
-    setCardToCheck({
-      id: null,
-      needCheck: false,
-      index: null,
-    });
+        localStorage.removeItem("gameDataStorage");
+        localStorage.removeItem("gameScoreStorage");
+        localStorage.removeItem("cardToCheckStorage");
+        localStorage.removeItem("gameDataMatchedStorage");
+        context.setApiCall(true);
+        setVictory(false);
+        setInitData(data);
+        setMatched([]);
+        setCardToCheck({
+          id: null,
+          needCheck: false,
+          index: null,
+        });
 
       } catch (error) {
         console.log(error);
@@ -239,10 +239,10 @@ localStorage.removeItem("gameDataStorage");
                 classname={card.isFlip ? "visible" : ""}
                 onClick={
                   isBusy
-                    ? () => {}
+                    ? () => { }
                     : card.isMatch
-                    ? () => {}
-                    : () => handleFlip(i, card)
+                      ? () => { }
+                      : () => handleFlip(i, card)
                 }
                 color={card.color}
               />
