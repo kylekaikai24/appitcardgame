@@ -37,4 +37,4 @@ Please kindly notice if any issue regarding NDA or copyright
 [bandcamp]: https://daily.bandcamp.com/lists/outer-space-ambient-list
 [restdbsite]: restdb.io
 [githubpage]: https://kylekaikai24.github.io/appitcardgame/#/appitcardgame
-[loadingio]: loading.io
+[loadingio]: https://loading.io/
