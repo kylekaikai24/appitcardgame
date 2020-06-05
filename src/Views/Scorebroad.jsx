@@ -39,7 +39,6 @@ const Scorebroad = (props) => {
       setIsLoading(false);
       let sortData = data.data;
       sortData.sort((a, b) => (b.score > a.score ? 1 : -1));
-      console.log(sortData);
       setTableData(sortData);
       localStorage.setItem("rankingDataStorage", JSON.stringify(sortData));
     } catch (error) {
@@ -94,27 +93,28 @@ const Scorebroad = (props) => {
               <tr>
                 <td></td>
                 <td>
-                  <img src={Spinner} style={{ width: "50px", height: "50px" }} />
+                  <img
+                    src={Spinner}
+                    style={{ width: "50px", height: "50px" }}
+                  />
                 </td>
                 <td></td>
               </tr>
+            ) : tableData && tableData.length > 0 ? (
+              tableData.map((item, index) => (
+                <tr key={`rank-${index}`}>
+                  <td>{index + 1}</td>
+                  <td>{item.playerName}</td>
+                  <td>{item.score}</td>
+                </tr>
+              ))
             ) : (
-                tableData && tableData.length > 0 ? (
-                  tableData.map((item, index) => (
-                    <tr key={`rank-${index}`}>
-                      <td>{index + 1}</td>
-                      <td>{item.playerName}</td>
-                      <td>{item.score}</td>
-                    </tr>
-                  ))
-                ) : (
-                    <tr>
-                      <td></td>
-                      <td>No records</td>
-                      <td></td>
-                    </tr>
-                  )
-              )}
+              <tr>
+                <td></td>
+                <td>No records</td>
+                <td></td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -20,6 +20,7 @@ Project automatically start at `localhost:3000`
 ## Resources
 
 SVG icons: [icons8][icons8site]  
+Spinner: [loading.io][loadingio]  
 Fonts: [Web Online Fonts][webonlinefonts]  
 Background Images: [Bandcamp][bandcamp]  
 Database : [restdb][restdbsite]
@@ -36,3 +37,4 @@ Please kindly notice if any issue regarding NDA or copyright
 [bandcamp]: https://daily.bandcamp.com/lists/outer-space-ambient-list
 [restdbsite]: restdb.io
 [githubpage]: https://kylekaikai24.github.io/appitcardgame/#/appitcardgame
+[loadingio]: loading.io

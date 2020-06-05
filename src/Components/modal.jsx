@@ -23,7 +23,6 @@ const modal = (props) => {
             value={value.playerName}
             onChange={(e) => {
               setFormData({ ...value, playerName: e.target.value });
-              console.log(value);
             }}
           />
           <p className="remind-msg">

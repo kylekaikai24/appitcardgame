@@ -142,10 +142,15 @@ const Game = (props) => {
     localStorage.setItem("gameDataMatchedStorage", JSON.stringify(matched));
   };
 
-  // API call: save data to restdb.io
-  const saveToDb = async (data) => {
-    const checkPlayerName = UseRegex(data.playerName);
-    console.log(checkPlayerName);
+  /*
+    handle regex checking, api call, reset all states 
+    after player submitted their name and pass the regex
+    send form data to database
+    remove all localstorage regarding the game status
+    set all states to initial value
+*/
+  const handleSubmitAndReGame = async () => {
+    const checkPlayerName = UseRegex(formData.playerName);
     if (checkPlayerName) {
       const options = {
         method: "POST",
@@ -153,80 +158,38 @@ const Game = (props) => {
           "cache-control": "no-cache",
           "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
         },
-        data: data,
+        data: formData,
         url:
           "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
       };
       try {
-        const data = await axios(options);
-        setCount(0);
-        setShowErrorMsg(false);
-        context.setApiCall(true);
-        setVictory(false);
-        setMatched([]);
-        setCardToCheck({
-          id: null,
-          needCheck: false,
-          index: null,
-        });
-        localStorage.removeItem("gameDataStorage");
-        localStorage.removeItem("gameScoreStorage");
-        localStorage.removeItem("cardToCheckStorage");
-        localStorage.removeItem("gameDataMatchedStorage");
+        await axios(options);
+        handleResetAll();
       } catch (error) {
         console.log(error);
       }
     } else {
-      console.log(checkPlayerName, data.playerName);
       setShowErrorMsg(true);
     }
   };
 
-  /*
-    handle re-game, after player submitted their name 
-    remove all localstorage regarding the game status
-    set all states to initial value
-*/
-  const handleReGame = async () => {
-    await saveToDb(formData);
+  // reset all states
+  const handleResetAll = () => {
+    setCount(0);
+    setShowErrorMsg(false);
     setInitData(data);
-    // const checkPlayerName = UseRegex(formData.playerName);
-    // console.log(checkPlayerName);
-    // if (checkPlayerName) {
-    //   const options = {
-    //     method: "POST",
-    //     headers: {
-    //       "cache-control": "no-cache",
-    //       "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
-    //     },
-    //     data: formData,
-    //     url:
-    //       "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
-    //   };
-    //   try {
-    //     const data = await axios(options);
-    //     setCount(0);
-    //     setShowErrorMsg(false);
-    //     setInitData(data);
-    //     context.setApiCall(true);
-    //     setVictory(false);
-    //     setMatched([]);
-    //     setCardToCheck({
-    //       id: null,
-    //       needCheck: false,
-    //       index: null,
-    //     });
-    //     localStorage.removeItem("gameDataStorage");
-    //     localStorage.removeItem("gameScoreStorage");
-    //     localStorage.removeItem("cardToCheckStorage");
-    //     localStorage.removeItem("gameDataMatchedStorage");
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // } else {
-    //   console.log(checkPlayerName, data.playerName);
-    //   setShowErrorMsg(true);
-    // }
+    context.setApiCall(true);
+    setVictory(false);
+    setMatched([]);
+    setCardToCheck({
+      id: null,
+      needCheck: false,
+      index: null,
+    });
+    localStorage.removeItem("gameDataStorage");
+    localStorage.removeItem("gameScoreStorage");
+    localStorage.removeItem("cardToCheckStorage");
+    localStorage.removeItem("gameDataMatchedStorage");
   };
 
   return (
@@ -249,10 +212,10 @@ const Game = (props) => {
                 classname={card.isFlip ? "visible" : ""}
                 onClick={
                   isBusy
-                    ? () => { }
+                    ? () => {}
                     : card.isMatch
-                      ? () => { }
-                      : () => handleFlip(i, card)
+                    ? () => {}
+                    : () => handleFlip(i, card)
                 }
                 color={card.color}
               />
@@ -262,7 +225,7 @@ const Game = (props) => {
       {victory && (
         <Modal
           count={countScore}
-          reGame={handleReGame}
+          reGame={handleSubmitAndReGame}
           value={formData}
           setFormData={setFormData}
           showErrorMsg={showErrorMsg}
