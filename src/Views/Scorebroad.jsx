@@ -94,6 +94,7 @@ const Scorebroad = (props) => {
                 <td></td>
                 <td>
                   <img
+                    alt="spinner"
                     src={Spinner}
                     style={{ width: "50px", height: "50px" }}
                   />
