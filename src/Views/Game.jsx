@@ -176,8 +176,27 @@ const Game = (props) => {
     set all states to initial value
 */
   const handleReGame = () => {
-    saveToDb(formData);
-    localStorage.removeItem("gameDataStorage");
+    // saveToDb(formData);
+
+const checkPlayerName = UseRegex(formData.playerName);
+    console.log(checkPlayerName);
+    if (checkPlayerName) {
+      const options = {
+        method: "POST",
+        headers: {
+          "cache-control": "no-cache",
+          "x-apikey": "260c55e44fcc603351421cc1b2c70921bdf32",
+        },
+        data: data,
+        url:
+          "https://cors-anywhere.herokuapp.com/https://ccbascappuat-cf19.restdb.io/rest/game-record",
+      };
+      try {
+        const data = await axios(options);
+        setCount(0);
+        setShowErrorMsg(false);
+
+localStorage.removeItem("gameDataStorage");
     localStorage.removeItem("gameScoreStorage");
     localStorage.removeItem("cardToCheckStorage");
     localStorage.removeItem("gameDataMatchedStorage");
@@ -190,7 +209,14 @@ const Game = (props) => {
       needCheck: false,
       index: null,
     });
-    setCount(0);
+
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log(checkPlayerName, data.playerName);
+      setShowErrorMsg(true);
+    }
   };
 
   return (
