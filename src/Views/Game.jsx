@@ -89,6 +89,7 @@ const Game = (props) => {
     4.) is match => push to matched array
 */
   const handleFlip = (index, card) => {
+    console.log("test cicd");
     const newData = [...initData];
     newData[index].isFlip = true;
     setInitData(newData);
